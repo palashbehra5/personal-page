@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palash Behra - About Me</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-description {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .about-text {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .skills-section {
+            margin-top: 1.5rem;
+        }
+        
+        .skills-section h2 {
+            margin-bottom: 0.75rem;
+        }
+      
+        .skills-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .skills-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+        
+        .skills-container::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        .skill-tag {
+            padding: 0.3rem 0.6rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            /* Add flex item properties */
+            flex: 0 0 auto;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="sidebar-layout">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-image">
+                <img src="../profile.jpg" alt="Palash Behra">
+            </div>
+            <h2>Palash Behra</h2>
+            <p>Machine Learning Engineer</p>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="experience.html"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="blogs.html"><i class="fas fa-blog"></i> Blogs</a></li>
+                <li><a href="photography.html"><i class="fas fa-camera"></i> Photography</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 Palash Behra</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="page-content about-page">
+            <div class="about-section">
+                <div class="page-description">
+                    Machine Learning Engineer
+                </div>
+                
+                <div class="about-text">
+                    <p>Hi, I'm Palash Behra — a Machine Learning Engineer passionate about turning raw data into real-world impact. At GIST Impact, I build ML systems for sustainability analytics, from information extraction to estimation models and scalable APIs.</p>
+                    
+                    <p>I hold a Master's in Computer Science from IIT Madras, where I worked on deep learning, NLP, compiler optimization, and CUDA programming. My projects spanned image and text classification, transliteration, information retrieval, parallelized tools, and interactive systems — all grounded in performance and usability.</p>
+                    
+                    <p>Originally trained in Mechanical Engineering, I bring a product design mindset to problem-solving, shaped by systems thinking and iterative design.</p>
+                    
+                    <p>Outside of work, I enjoy strength training, listening to music, and playing games in my downtime.</p>
+                </div>
+                
+                <div class="skills-section">
+                    <h2>Skills</h2>
+                    <div class="skills-container">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Natural Language Processing</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">API Development</span>
+                        <span class="skill-tag">Parallel Computing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

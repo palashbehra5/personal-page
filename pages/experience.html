@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palash Behra - Experience</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .experience-section h1 {
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 25px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -50px;
+        }
+        
+        .timeline-header {
+            margin-bottom: 15px;
+        }
+        
+        .timeline-header h2 {
+            color: var(--text-color);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+        
+        .company {
+            color: var(--secondary-color);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .duration {
+            color: var(--text-color-secondary);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .experience-content ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        .experience-content li {
+            margin-bottom: 10px;
+            color: var(--text-color-secondary);
+            line-height: 1.6;
+        }
+        
+        .experience-content li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .experience-content strong {
+            color: var(--text-color);
+        }
+        
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 25px;
+                left: 0 !important;
+            }
+            
+            .timeline-content::after {
+                left: -40px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content::after {
+                left: -30px !important;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .timeline-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .company {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="sidebar-layout">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-image">
+                <img src="../profile.jpg" alt="Palash Behra">
+            </div>
+            <h2>Palash Behra</h2>
+            <p>Machine Learning Engineer</p>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="experience.html" class="active"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="blogs.html"><i class="fas fa-blog"></i> Blogs</a></li>
+                <li><a href="photography.html"><i class="fas fa-camera"></i> Photography</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 Palash Behra</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="page-content experience-section">
+            <h1>Skill Tree</h1>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>ML Engineer</h2>
+                            <span class="company">Gist Impact</span>
+                            <span class="duration">July 2024 - Present</span>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li><strong>Auto-Tagging Service:</strong> Designed and deployed a scalable system to automate KPI tagging in company reports, improving coverage and adaptability across various data formats.</li>
+                                <li><strong>Rebuilding ML Estimations:</strong> Developed machine learning models and a streamlined data pipeline to enhance the quality and efficiency of missing metric estimations used in analytics products.</li>
+                                <li><strong>Portfolio Analysis API:</strong> Re-architected a financial analytics tool to improve performance and responsiveness by optimizing backend infrastructure and resource handling.</li>
+                                <li><strong>Generating CSRD Double Materiality Scores Insights:</strong> Built an insights generation framework to improve traceability and interpretability of sustainability scoring through advanced retrieval and generation techniques.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>M.Tech in Computer Science – Final Year</h2>
+                            <span class="company">Indian Institute of Technology Madras</span>
+                            <span class="duration">August 2023 – May 2024</span>
+                        </div>
+                        <div class="experience-content">
+                            <p><strong>Key coursework:</strong> GPU Programming, Advanced Compiler Design, Secure Systems Engineering, Deep Learning for Imaging</p>
+                            <p>Pursued my Master's thesis under Prof. Balaraman Ravindran, focused on applying machine learning techniques to medical imaging.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>Research Intern</h2>
+                            <span class="company">Philips Innovation Campus</span>
+                            <span class="duration">June 2023 - July 2023</span>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Contributed to a real-time image segmentation project in medical imaging by experimenting with model optimization techniques and implementing a custom training workflow.</li>
+                                <li>Developed and tested various model architectures to improve segmentation accuracy while maintaining real-time performance requirements.</li>
+                                <li>Collaborated with the research team to integrate the optimized models into the existing medical imaging pipeline.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>M.Tech in Computer Science – First Year</h2>
+                            <span class="company">Indian Institute of Technology Madras</span>
+                            <span class="duration">July 2022 – May 2023</span>
+                        </div>
+                        <div class="experience-content">
+                            <p><strong>Key coursework:</strong> Advanced Data Structures and Algorithms, Pattern Recognition and Machine Learning, Linear Algebra and Probability, Fundamentals of Deep Learning, Natural Language Processing, Smart Sensing in IoT</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>GATE Preparation</h2>
+                            <span class="company">Self-Study</span>
+                            <span class="duration">June 2021 - February 2022</span>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Prepared for GATE CSE 2022, focusing on computer science fundamentals and advanced topics.</li>
+                                <li>Secured All India Rank 68 in GATE 2022, qualifying for admission to IIT Madras M.Tech program.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h2>B.Tech in Mechanical Engineering</h2>
+                            <span class="company">Manipal University Jaipur</span>
+                            <span class="duration">August 2017 - May 2021</span>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Took a breadth-first approach to learning, which led to a growing interest in programming and product design over conventional mechanical pathways.</li>
+                                <li>Co-inventor of a patented "Portable Stair Climbing Mechanism for the Conventional Trolley" (Patent No. 202111055446), developed as part of a hands-on design initiative.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

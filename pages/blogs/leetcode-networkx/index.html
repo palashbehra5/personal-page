@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart LeetCode Practice: Navigating Problems with NetworkX | Palash's Blog</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</head>
+<body class="sidebar-layout">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-image">
+                <img src="../../../profile.jpg" alt="Palash Behra">
+            </div>
+            <h2>Palash Behra</h2>
+            <p>Machine Learning Engineer</p>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../../../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="../../about.html"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="../../experience.html"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="../../blogs.html"><i class="fas fa-blog"></i> Blogs</a></li>
+                <li><a href="../../photography.html"><i class="fas fa-camera"></i> Photography</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 Palash Behra</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="blog-container">
+            <h1>Smart LeetCode Practice: Navigating Problems with NetworkX</h1>
+            <div class="blog-meta">
+                <span class="date"><i class="far fa-calendar"></i> February 20, 2024</span>
+                <span class="read-time"><i class="far fa-clock"></i> 5 min read</span>
+            </div>
+
+            <div class="blog-intro">
+                As we returned from our respective internships in the third semester of our MTech programs, we approached what was arguably the most intense and stressful phase, placement preparation. Ideally, one would have started early, but the demanding curriculum had left little room for dedicated prep. The challenge, then, was clear: how could we achieve the best results with minimal yet strategic preparation?
+            </div>
+
+            <img src="images/intro.png" alt="LeetCode NetworkX Visualization" class="feature-image">
+            
+            <p>
+                Given the many companies hiring for SDE roles, most naturally focus on practicing Data Structures and Algorithms (DSA) problems. This preparation typically falls into two approaches:
+            </p>
+
+            <ol>
+                <li>Patiently solving problems from a standard textbook, our choice being Algorithm Design by Jon Kleinberg and Éva Tardos (as covered in our Advanced DSA course), while carefully developing, if not formal, at least intuitive proofs for solutions.</li>
+                <li>Memorizing solutions to frequently asked interview problems, relying on pattern recognition rather than deep understanding.</li>
+            </ol>
+
+            <p>
+                Most of us, however, land somewhere in between, attempting to cover a diverse set of commonly asked problems with enough variation to maximize exposure to different problem patterns. For that, we rely on sheets curated by professionals.
+            </p>
+
+            <p>
+                A bottleneck emerges while covering diverse topics: the Paradox of Choice. With an ever-growing influx of problem sheets, we often waste time deciding where to start. This also introduces a Developer Bias, as these sheets are typically curated by individuals whose selection criteria may not align with our specific needs or weaknesses.
+            </p>
+
+            <p>
+                This raised fundamental questions about effective problem progression in such a broad domain. Is there a universally ideal starting problem for each topic? What sequence of problems maximizes conceptual understanding? More importantly, can we move beyond individual intuition and develop data-driven procedures that offer generalizable learning strategies?
+            </p>
+
+            <h2>Modelling</h2>
+            <p>
+                If we assume that problems are related, a graph is a natural choice to represent these relationships. The edges must be directed since progression is a key requirement, indicating the flow from simpler to more complex problems. Additionally, edges should only exist between similar problems to ensure meaningful transitions, and weights can be assigned based on relative difficulty to guide an optimal learning path.
+            </p>
+
+            <h2>Feature Selection</h2>
+            <p>
+                To establish meaningful connections between problems, we need strong features that effectively convey similarity. When visiting a problem page, we are presented with multiple attributes:
+            </p>
+
+            <div class="feature-section">
+                <img src="images/feature_selection_description.png" alt="Problem Description Feature" class="feature-image">
+                <p class="image-caption">
+                    The problem description might not be accurate, as it often presents an abstraction rather than the core concept. Additionally, it relies heavily on informal and natural language, which may fail to convey meaningful insight into the problem's underlying structure.
+                </p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/feature_selection_topics.png" alt="Problem Topics Feature" class="feature-image">
+                <p class="image-caption">
+                    A good representation but not very exhaustive. The assigned topics do not always cover the multiple approaches a problem can be solved with. This is important because exploring different approaches provides an opportunity to learn new techniques or think outside the box.
+                </p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/feature_selection_comments.png" alt="Problem Comments Feature" class="feature-image">
+                <p class="image-caption">
+                    Pretty self-explanatory.
+                </p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/feature_selection_solutions.png" alt="Problem Solutions Feature" class="feature-image">
+                <p class="image-caption">
+                    Not bad, but not great either. Code alone is not a strong feature since syntax does not inherently convey much about the problem, and the structure of a solution can vary significantly based on individual coding styles. The combination of a solution and its description is also unreliable, as poorly written explanations often introduce noise with unnecessary details or provide no explanation at all.
+                </p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/feature_selection_solution_tags.png" alt="Solution Tags Feature" class="feature-image">
+                <p class="image-caption">
+                    This is the safest bet so far, as it provides a frequency-wise distribution of topics based on submissions from many users. Since these tags emerge from collective user input, they offer a more generalized and statistically significant representation of problem-solving approaches.
+                </p>
+            </div>
+
+            <p>
+                For difficulty, an existing problem rating list has been created and contributed to LeetCode Problem Rating; thanks to ZeroTrac and the community for compiling this valuable resource.
+            </p>
+
+            <h2>Exploratory Data Analysis</h2>
+            <p>
+                With the dataset in place, the exploration began.
+                Due to the large size of the full correlation heatmap, it isn't practical to visualize in its entirety.
+                Instead, the tags have been grouped into clusters, where each cluster brings together tags with stronger mutual correlations.
+                A simple linear correlation analysis yielded the following clustered results:
+            </p>
+            <div class="visualization-section">
+                <h2>Solution Tags Clustering</h2>
+                <p>Visualizing the clustering of solution tags to identify patterns and relationships.</p>
+                <div class="cluster-controls">
+                    <div class="input-group">
+                        <label for="n-clusters">Number of Clusters:</label>
+                        <input type="number" id="n-clusters" min="2" max="10" value="3">
+                        <button id="fetch-clusters-btn">Go</button>
+                    </div>
+                    <div class="cluster-select">
+                        <label for="cluster-select">Select Cluster:</label>
+                        <select id="cluster-select"></select>
+                    </div>
+                </div>
+                <div id="heatmap-container"></div>
+            </div>
+            <p>
+                A heatmap of the Pearson correlation between user-submitted solution tags provides insights into how different problem-solving approaches relate to each other. Higher correlation values indicate that certain techniques frequently appear together, suggesting possible conceptual overlaps or dependencies between problem types.
+            </p>
+            <p>
+                Analyzing the top correlating solution tags reveals expected relationships:
+            </p>
+            <div class="correlation-pairs">
+                <div class="correlation-pairs-header">
+                    <h3>Top Correlating Solution Tags</h3>
+                    <div class="correlation-pairs-nav">
+                        <button id="prev-pairs" class="nav-button" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="pairs-range">1-5</span>
+                        <button id="next-pairs" class="nav-button">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="correlation-pairs-container"></div>
+            </div>
+
+            <h3>Strongest relationships between algorithm tags</h3>
+            <p>
+                These correlations align with intuitive expectations. DFS and BFS commonly appear together due to their fundamental tree and graph traversal roles. The strong association between recursion and trees further supports its prevalence in pre- and post-order traversal problems.
+            </p>
+
+            <p>
+                Since our feature vectors become sparse due to the high number of unique tags, we can employ Principal Component Analysis (PCA) to obtain denser embeddings while reducing redundancy. This allows for more compact and meaningful representations of problem relationships.
+            </p>
+
+            <div class="feature-section">
+                <img src="images/pca_results.png" alt="PCA Results" class="feature-image">
+                <p class="image-caption">PCA feature reduction results.</p>
+            </div>
+
+            <p>
+                Now that the feature vectors were available, the next step was determining an appropriate threshold for identifying neighboring nodes. One approach was to set a similarity threshold, considering an edge between two nodes only if their cosine similarity exceeded a certain value. Such a graph was defined at various thresholds, and its structural statistics were analyzed at each level.
+            </p>
+
+            <div class="feature-section">
+                <img src="images/thresholding_results.png" alt="Thresholding Results" class="feature-image">
+                <p class="image-caption">The analysis was initially performed at thresholds of 25, 50, 75, and 90, before being narrowed down to a more refined range. The goal was to determine a threshold that minimized the number of connected components, ensuring that all problems remained reachable from each other. Outlier detection was conducted based on the total number of submitted tags to address the issue of small-sized clusters, but it did not yield any significant improvements.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/clustering_results.png" alt="Clustering Results" class="feature-image">
+                <p class="image-caption">Clustering was employed as an approach for topic modeling, where the maximum voted tags within a cluster could assist in unsupervised classification of a set of problems. However, this approach introduced a challenge.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/clustering_vanilla.png" alt="Vanilla Clustering Results" class="feature-image">
+                <p class="image-caption">Clustering solely using K-Means resulted in a large, dense cluster where many problems were grouped together, while others were confined to much smaller clusters. This imbalance indicated that K-Means struggled to properly capture the structural relationships between problems.</p>
+            </div>
+
+            <p>
+                Addressing this problem at an algorithmic level required devising a heuristic solution to manage small cluster sizes. The pseudocode was implemented to enforce a constraint on the maximum cluster size, ensuring no cluster exceeded a predefined limit.
+            </p>
+
+            <pre><code>def RecursiveClustering(df, max_size):
+
+    # Start with all points unlabeled
+    labels = [-1 for every row in df]
+    current_label = 0
+    
+    # Helper function to handle clustering
+    def process_cluster(subset, label):
+        if number of points in subset <= max_size:
+            # Label all these points
+            for index in subset:
+                labels[index] = label
+            return label + 1  # Next available label
+        
+        # Try to split the cluster
+        try:
+            # Split into two groups
+            kmeans_result = do KMeans(k=2) on subset
+            group1 = [points where kmeans says cluster 0]
+            group2 = [points where kmeans says cluster 1]
+            
+            # Check if split actually worked
+            if either group is empty:
+                oops, bad split!  # Force fallback
+            
+            # Recurse on both groups
+            next_label = process_cluster(group1, label)
+            next_label = process_cluster(group2, next_label)
+            return next_label
+            
+        except:  # If anything went wrong
+            # Label entire cluster as current label
+            for index in subset:
+                labels[index] = label
+            return label + 1
+    
+    # Start with all data as first cluster
+    process_cluster(all_data_points, current_label)
+    
+    return labels</code></pre>
+
+            <div class="recursive-clustering">
+                <div class="recursive-clustering-header">
+                    <h3>Recursive Clustering Visualization</h3>
+                    <div class="recursive-clustering-controls">
+                        <label for="max-size-select">Select Max Cluster Size:</label>
+                        <select id="max-size-select" class="recursive-clustering-select">
+                            <option value="">Loading...</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="recursive-clustering-container" class="recursive-clustering-graph"></div>
+            </div>
+
+            <p>
+                The cluster sizes improved after enforcing the maximum size constraint, but the issue of small clusters still persisted. To address this, a merging routine would be required, potentially introducing an additional constraint to ensure better cluster balancing. This aspect remains an open challenge and will be explored as part of future work.
+            </p>
+
+            <h2>Inferencing</h2>
+            <p>
+                Now, the graph between nodes i and j is defined using the NetworkX library, a Python package designed for the creation, manipulation, and analysis of complex networks. Edges are established between nodes where the cosine similarity of their respective feature vectors exceeds 0.7. Additionally, a directed edge is assigned based on the absolute difference in problem ratings, ensuring that the direction reflects the relative difficulty between problems.
+            </p>
+
+            <div class="feature-section">
+                <img src="images/graph_statistics.png" alt="Graph Statistics" class="feature-image">
+                <p class="image-caption">Simple graph statistics.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/zero_degree_problems.png" alt="Zero Degree Problems" class="feature-image">
+                <p class="image-caption">Problem IDs with zero degree: [1584, 1072, 838, 769, 900, 1267, 2273, 2352, 821, 2293]</p>
+                <p class="image-note">Note: t-SNE is a dimensionality reduction technique and may distort original high-dimensional relationships, making some points appear closer than they actually are.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/graph_degree_edges.png" alt="Graph Degree and Edges" class="feature-image">
+                <p class="image-caption">Most problems exhibit a relatively small difficulty slope between them, as seen in the graph. Additionally, a significant number have fewer neighbors, with a second peak likely representing more generic problems that act as gateways to multiple concepts.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/top_3_nodes_highest_degrees.png" alt="Top Nodes by Degree" class="feature-image">
+                <p class="image-caption">Harder problems dominate the top-degree list as they cover more topics, linking to many simpler problems. Higher out-degree, however, is seen in easier problems that serve as stepping stones to complex ones.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/indegree_outdegree_analysis.png" alt="In-Degree Out-Degree Analysis" class="feature-image">
+                <p class="image-caption">An easy array-focused DP problem is a great starting point, while hard multi-topic problems serve as ideal endpoints for mastering concepts.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/bfs.png" alt="BFS Analysis" class="feature-image">
+                <p class="image-caption">Well, that escalated quickly! BFS gets you to harder problems with the fewest problems solved in between but ignores difficulty since it doesn't consider edge weights.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/dijikstra.png" alt="Dijkstra Analysis" class="feature-image">
+                <p class="image-caption">Now, while Dijkstra accounts for edge weights, it simply finds the shortest aggregated path without guaranteeing a smooth progression in difficulty.</p>
+            </div>
+
+            <div class="lowest-weight-path">
+                <div class="path-controls">
+                    <div class="input-group">
+                        <label for="top-k-input">Top K (1-5):</label>
+                        <input type="number" id="top-k-input" min="1" max="5" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="max-entries-input">Max Problems(3-15):</label>
+                        <input type="number" id="max-entries-input" min="3" max="15" value="5">
+                    </div>
+                    <button id="fetch-paths-btn" class="path-button">Go</button>
+                </div>
+                <div id="paths-container">
+                    <table id="paths-table">
+                        <thead>
+                            <tr>
+                                <th>Problem ID</th>
+                                <th>Title</th>
+                                <th>Rating</th>
+                                <th>Tags</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paths-table-body">
+                            <!-- Table rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <p class="image-caption">Designing a custom algorithm that favors the lowest edge weights leads to smoother transitions but produces a very long path — around 257 problems in this case. The interactive tool above allows you to fine-tune the path by adjusting top_k (to control variation) and max_entries (to limit the number of problems).</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/pagerank.png" alt="PageRank Analysis" class="feature-image">
+                <p class="image-caption">Top-ranked problems serve as final challenge points.</p>
+            </div>
+
+            <div class="feature-section">
+                <img src="images/pagerank_inverted.png" alt="Inverted PageRank Analysis" class="feature-image">
+                <p class="image-caption">However, running PageRank on the inverted graph reveals different insights. High PageRank problems now serve as key entry point. They are generally of medium difficulty, making them ideal for a structured learning path before progressing to harder challenges.</p>
+            </div>
+
+            <h2>Summary</h2>
+            <ul>
+                <li>The article addresses the challenge of efficient DSA problem selection for SDE placement preparation.</li>
+                <li>A graph-based model using problem tags and difficulty ratings is proposed to represent problem relationships.</li>
+                <li>Clustering and graph algorithms are used to infer optimal problem sequences.</li>
+                <li>Easy to medium problems with high connectivity are ideal starting points.</li>
+                <li>Hard, multi-topic problems serve as effective end-points for mastery.</li>
+            </ul>
+
+            <h2>Future Work</h2>
+            <ul>
+                <li>Utilize Graph Neural Networks (GNNs) to generate more sophisticated problem embeddings.</li>
+                <li>Explore advanced graph algorithms for refined problem sequencing and cluster balancing.</li>
+                <li>Incorporate user feedback and performance data for adaptive learning paths.</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="../../../script.js"></script>
+</body>
+</html> 
