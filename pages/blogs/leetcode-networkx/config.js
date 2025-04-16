@@ -2,7 +2,7 @@
 const config = {
     PUBLIC_API_BASE_URL: "http://13.60.210.227:5000",
     LOCAL_API_BASE_URL: "http://127.0.0.1:5000",
-    DEFAULT_USE_LOCAL: true,
+    DEFAULT_USE_LOCAL: false,
 
     getBaseUrl: () => {
         const useLocal = localStorage.getItem('useLocalApi') === 'true' || config.DEFAULT_USE_LOCAL;
