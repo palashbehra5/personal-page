@@ -1,6 +1,6 @@
 // API Configuration
 const config = {
-    PUBLIC_API_BASE_URL: "http://13.60.210.227:5000",
+    PUBLIC_API_BASE_URL: "https://51.20.129.104:8443",
     LOCAL_API_BASE_URL: "http://127.0.0.1:5000",
     DEFAULT_USE_LOCAL: false,
 
